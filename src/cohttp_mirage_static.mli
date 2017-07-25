@@ -20,7 +20,7 @@
 (** Serve static HTTP sites from a Mirage key-value store. *)
 
 (** Plain HTTP file serving from a read-only key-value store. *)
-module HTTP(FS: Mirage_kv_lwt.RO)(S:Cohttp_lwt.Server) : sig
+module HTTP(FS: Mirage_kv_lwt.RO)(S:Cohttp_lwt.S.Server) : sig
 
   (** [start http_port ?request_fn fs http] will start a static
     HTTP server listening on [http_port].  The files to serve will
@@ -29,7 +29,7 @@ module HTTP(FS: Mirage_kv_lwt.RO)(S:Cohttp_lwt.Server) : sig
     If [request_fn] is supplied, the URI and default header set
     (including the MIME content-type header) will be passed to it
     and the response used as the response header set instead. *)
-  
+
   val start: http_port:int ->
     ?request_fn:(Uri.t -> Cohttp.Header.t -> Cohttp.Header.t) ->
     FS.t -> ([> `TCP of int ] -> S.t -> 'a) -> 'a
