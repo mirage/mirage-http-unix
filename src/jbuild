@@ -1,0 +1,8 @@
+(jbuild_version 1)
+
+(library
+ ((name        mirage_http)
+  (public_name mirage-http)
+  (wrapped     false)
+  (libraries   (magic-mime mirage-channel-lwt cohttp-lwt mirage-kv-lwt
+                mirage-conduit))))
