@@ -1,5 +1,5 @@
 all:
-	ocaml pkg/pkg.ml build
+	jbuilder build --dev
 
 clean:
-	ocaml pkg/pkg.ml clean
+	rm -rf _build
